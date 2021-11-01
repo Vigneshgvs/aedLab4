@@ -12,14 +12,24 @@ import java.util.Map;
  *
  * @author vigneshguna
  */
-public class Person {
+public class Person extends House{
     
     private String name;
     private int age;
-    private String homeAddress;
+    /*private String homeAddress;
     private String city;
-    private String community;
+    private String community;*/
     private long contactDirectory;
+
+    /*public Person(String homeAddress, String community, String city) {
+        super(homeAddress, community, city);
+    }*/
+
+    public Person() {
+        super();
+    }
+    
+    
 
     public String getName() {
         return name;
@@ -37,7 +47,7 @@ public class Person {
         this.age = age;
     }
 
-    public String getHomeAddress() {
+    /*public String getHomeAddress() {
         return homeAddress;
     }
 
@@ -59,7 +69,7 @@ public class Person {
 
     public void setCommunity(String community) {
         this.community = community;
-    }
+    }*/
 
     public long getContactDirectory() {
         return contactDirectory;

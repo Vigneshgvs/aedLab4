@@ -781,29 +781,32 @@ public class DashboardJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblFiltered.getModel();
         model.setRowCount(0);
         
+        
         for (Patient patient : temp) {
             Person p = patient.getPerson();
-            Encounter e = new ArrayList<>(patient.getVisit().keySet()).get(patient.getVisit().size() - 1);
-            VitalSigns v = new ArrayList<>(patient.getVisit().values()).get(patient.getVisit().size() - 1);
+            if (patient.getVisit().size()>=1) {
+                Encounter e = new ArrayList<>(patient.getVisit().keySet()).get(patient.getVisit().size() - 1);
+                VitalSigns v = new ArrayList<>(patient.getVisit().values()).get(patient.getVisit().size() - 1);
 
-            Object[] column = new Object[14];
+                Object[] column = new Object[14];
             
-            column[0] = patient.getPatientId();
-            column[1] = p.getName();
-            column[2] = p.getAge();
-            column[3] = p.getHomeAddress();
-            column[4] = p.getCity();
-            column[5] = p.getContactDirectory();
-            column[6] = p.getCommunity();
-            column[7] = e.getDate();
-            column[8] = e.getDoctor();
-            column[9] = v.getBreathing();
-            column[10] = v.getPulse();
-            column[11] = v.getTemperature();
-            column[12] = v.getBloodPressure();
-            column[13] = v.getRemarks();
+                column[0] = patient.getPatientId();
+                column[1] = p.getName();
+                column[2] = p.getAge();
+                column[3] = p.getHomeAddress();
+                column[4] = p.getCity();
+                column[5] = p.getContactDirectory();
+                column[6] = p.getCommunity();
+                column[7] = e.getDate();
+                column[8] = e.getDoctor();
+                column[9] = v.getBreathing();
+                column[10] = v.getPulse();
+                column[11] = v.getTemperature();
+                column[12] = v.getBloodPressure();
+                column[13] = v.getRemarks();
 
-            model.addRow(column);
+                model.addRow(column);
+            }
         }
         
     }

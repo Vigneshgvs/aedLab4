@@ -4,10 +4,24 @@
  */
 package model;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 /**
  *
  * @author vigneshguna
  */
-public class PersonDirectory {
-    
+public class PersonDirectory extends System {
+    private Set<Person> personsFullList = new LinkedHashSet<Person>();
+
+    public PersonDirectory() {
+    }
+
+    public Set<Person> getPersonsFullList() {
+        return personsFullList;
+    }
+
+    public void setPersonsFullList(Set<Person> personsFullList) {
+        this.personsFullList = personsFullList;
+    }
 }

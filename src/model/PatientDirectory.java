@@ -12,13 +12,14 @@ import java.util.Set;
  *
  * @author vigneshguna
  */
-public class PatientDirectory {
+public class PatientDirectory extends System{
     
     
     private Set<Patient> patientsFullList = new LinkedHashSet<Patient>();
     private Set<String> patientIdSet = new LinkedHashSet<String>();
 
     public PatientDirectory() {
+        super();
         patientIdSet.add("--Select--");
     }
     
