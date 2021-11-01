@@ -211,7 +211,12 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         Person person = new Person();
         
-        //validation ?
+        //validation
+        String message = validateFields();
+        if(!message.equals("pass")) {
+            JOptionPane.showMessageDialog(this, message);
+            return;
+        }
         
         person.setName(nameTextField.getText());
         person.setAge(Integer.parseInt(ageTextField.getText()));
@@ -229,7 +234,22 @@ public class CreateJPanel extends javax.swing.JPanel {
         clearFields();
         JOptionPane.showMessageDialog(this, "Patient Record is added !");
     }//GEN-LAST:event_btnAddActionPerformed
-
+    private String validateFields() {
+        if (nameTextField.getText()==null || nameTextField.getText().isBlank() || !nameTextField.getText().matches("[[A-Z]*[a-z]+\\s]+")) {
+            return "Name is mandatory and can contain only text";
+        } else if (ageTextField.getText()==null || !ageTextField.getText().matches("^\\d{1,3}$")) {
+            return "Age is mandatory and can contain only Numbers, max 3 digits";
+        } else if (streetTextField.getText()==null ||  streetTextField.getText().isBlank() || !streetTextField.getText().matches("^[A-Za-z0-9 _]*$")) {
+            return "Street is mandatory and can contain text w/wo numbers";
+        } else if (cityTextField.getText()==null || cityTextField.getText().isBlank() || !cityTextField.getText().matches("[\\w\\s]+")) {
+            return "City is mandatory and can contain only text";
+        } else if (commGroup.getSelection()==null) {
+            return "Community is mandatory and choose one";
+        } else if (contactTextField.getText()==null || !contactTextField.getText().matches("^\\d{10}$")) {
+            return "Contact Number is mandatory and can contain only 10 numbers";
+        }
+        return "pass";
+    }
     private void asianRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asianRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_asianRadioActionPerformed

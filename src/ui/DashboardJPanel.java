@@ -482,7 +482,7 @@ public class DashboardJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         communitySelection.clear();
         ageSelection.clear();
-        finalList.clear();
+        finalList = new LinkedHashSet<Patient>(patientDirectory.getPatientsFullList());
         
         getFilters();
         Set<Patient> temp = new LinkedHashSet<Patient>(applyFilters());
@@ -606,7 +606,8 @@ public class DashboardJPanel extends javax.swing.JPanel {
             }
         }
         
-        return finalList.isEmpty()? temp : finalList;
+        //return finalList.isEmpty()? temp : finalList;
+        return finalList;
     }
     private Set<Patient> filterAge(Set<Patient> temp) {
         if (!ageSelection.isEmpty()) {
@@ -632,7 +633,7 @@ public class DashboardJPanel extends javax.swing.JPanel {
             }
         }
         
-        return finalList.isEmpty()? temp : finalList;
+        return finalList;
     }
     private Set<Patient> filterBP(Set<Patient> temp) {
         if (bpGroup.getSelection() != null) {
@@ -668,7 +669,7 @@ public class DashboardJPanel extends javax.swing.JPanel {
             }
         }
         
-        return finalList.isEmpty()? temp : finalList;
+        return finalList;
     }
     private Set<Patient> filterTemp(Set<Patient> temp) {
         if (tempGroup.getSelection() != null) {
@@ -703,7 +704,7 @@ public class DashboardJPanel extends javax.swing.JPanel {
             }
         }
         
-        return finalList.isEmpty()? temp : finalList;
+        return finalList;
     }
     private Set<Patient> filterBreath(Set<Patient> temp) {
         if (breathGroup.getSelection() != null) {
@@ -738,7 +739,7 @@ public class DashboardJPanel extends javax.swing.JPanel {
             }
         }
         
-        return finalList.isEmpty()? temp : finalList;
+        return finalList;
     }
     private Set<Patient> filterPulse(Set<Patient> temp) {
         if (pulseGroup.getSelection() != null) {
@@ -773,7 +774,7 @@ public class DashboardJPanel extends javax.swing.JPanel {
             }
         }
         
-        return finalList.isEmpty()? temp : finalList;
+        return finalList;
     }
     
     private void populateFilterTable(Set<Patient> temp ) {
